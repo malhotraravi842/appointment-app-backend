@@ -35,6 +35,7 @@ exports.registerUser = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+
 exports.loginUser = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -70,7 +71,7 @@ exports.loginUser = (req, res, next) => {
 
       res
         .status(200)
-        .json({ message: "Login is successfull.", data: { token: token } });
+        .json({ message: "Login is successfull.", accessToken: token });
     })
     .catch((err) => next(err));
 };
