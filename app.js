@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const authRoutes = require("./routes/auth");
+const userAuthRoutes = require("./routes/userAuth");
+const orgAuthRoutes = require("./routes/organizationAuth");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -15,7 +16,8 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
-app.use("/auth", authRoutes);
+app.use("/user/auth", userAuthRoutes);
+app.use("/org/auth", orgAuthRoutes);
 
 app.use((error, req, res, next) => {
   const status = error.status || 500;
